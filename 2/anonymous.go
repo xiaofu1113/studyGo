@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 type people struct {
 	name    string
@@ -18,9 +21,16 @@ type yellowRace struct {
 	people
 }
 
-func main()  {
-	people1 :=people{}
-	fmt.Println( people1.action("人很牛逼了"))
-	people2 :=yellowRace{}
+func main() {
+	fmt.Println(time.Now())
+	go func(str string) {
+		fmt.Println("看谁快!!", str)
+	}("我的")
+	people1 := people{}
+	fmt.Println(people1.action("人很牛逼了"))
+	time.Sleep(1 * time.Second)
+	people2 := yellowRace{}
 	fmt.Println(people2.action("黄种人也牛逼了"))
+	time.Sleep(1 * time.Second)
+	fmt.Println(time.Now())
 }
